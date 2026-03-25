@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/msudawg07/job-tracker-api/issues"
   },
-  "homepage": "https://github.com/msudawg07/job-tracker-api#readme"
+  "homepage": "https://github.com/msudawg07/job-tracker-api#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1693.0"
+  }
 }
