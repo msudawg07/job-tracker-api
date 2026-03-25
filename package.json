@@ -1,0 +1,21 @@
+{
+  "name": "job-tracker-api",
+  "version": "1.0.0",
+  "description": "Serverless AWS backend for a job tracking app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msudawg07/job-tracker-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/msudawg07/job-tracker-api/issues"
+  },
+  "homepage": "https://github.com/msudawg07/job-tracker-api#readme"
+}
