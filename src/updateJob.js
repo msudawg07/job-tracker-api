@@ -1,30 +1,29 @@
-// const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
-// const { DynamoDBDocumentClient, PutCommand } = require("@aws-sdk/lib-dynamodb");
-
 const AWS = require("aws-sdk");
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 exports.handler = async (event) => {
-  const body = JSON.parse(event.body);
-  const jobId = Date.now().toString();
 
-  const newJob = {
+  const jobId = event.pathParameters.id;
+  const body = JSON.parse(event.body);
+
+  const updatedJob = {
     jobId: jobId,
     title: body.title,
     company: body.company
-  };
+  }
+
   const params = {
     TableName: "jobs",
-    Item: newJob
+    Item: updatedJob
   };
 
-  await dynamodb.put(params).promise();
+  const result = await dynamodb.put(params).promise();
 
   return {
     statusCode: 200,
     body: JSON.stringify({
-      message: "new job added successfully",
-      job: newJob
+      message: "Job successfully updated",
+      updatedJob: updatedJob
     })
   }
 }
