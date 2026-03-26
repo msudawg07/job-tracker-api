@@ -23,8 +23,8 @@ exports.handler = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      message: "createJob Lambda is working!",
-      job: job
+      message: "new job added successfully",
+      job: newJob
     })
   }
 }
