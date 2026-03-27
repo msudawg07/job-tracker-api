@@ -1,5 +1,8 @@
-const AWS = require("aws-sdk");
-const dynamodb = new AWS.DynamoDB.DocumentClient();
+const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
+const { DynamoDBDocumentClient, PutCommand } = require("@aws-sdk/lib-dynamodb");
+
+const client = new DynamoDBClient({});
+const dynamodb = DynamoDBDocumentClient.from(client);
 
 exports.handler = async (event) => {
 
@@ -17,7 +20,7 @@ exports.handler = async (event) => {
     Item: updatedJob
   };
 
-  const result = await dynamodb.put(params).promise();
+  await dynamodb.send(new PutCommand(params));
 
   return {
     statusCode: 200,

@@ -1,5 +1,8 @@
-const AWS = require("aws-sdk");
-const dynamodb = new AWS.DynamoDB.DocumentClient();
+const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
+const { DynamoDBDocumentClient, DeleteCommand } = require("@aws-sdk/lib-dynamodb");
+
+const client = new DynamoDBClient({});
+const dynamodb = DynamoDBDocumentClient.from(client);
 
 exports.handler = async (event) => {
   const jobId = event.pathParameters.id;
@@ -12,7 +15,7 @@ exports.handler = async (event) => {
     }
   };
 
-  await dynamodb.delete(params).promise();
+  await dynamodb.send(new DeleteCommand(params))
 
   return {
     statusCode: 200,

@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/msudawg07/job-tracker-api#readme",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1018.0",
+    "@aws-sdk/lib-dynamodb": "^3.1018.0",
     "aws-sdk": "^2.1693.0"
   }
 }

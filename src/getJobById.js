@@ -1,5 +1,8 @@
-const AWS = require("aws-sdk");
-const dynamodb = new AWS.DynamoDB.DocumentClient();
+const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
+const { DynamoDBDocumentClient, GetCommand } = require("@aws-sdk/lib-dynamodb");
+
+const client = new DynamoDBClient({});
+const dynamodb = DynamoDBDocumentClient.from(client);
 
 exports.handler = async (event) => {
 
@@ -12,12 +15,12 @@ exports.handler = async (event) => {
     }
   };
 
-  const result = await dynamodb.get(params).promise();
+  const result = await dynamodb.send(new GetCommand(params));
 
   return {
     statusCode: 200,
     body: JSON.stringify({
-      job: result.Items
+      job: result.Item
     })
   }
 }

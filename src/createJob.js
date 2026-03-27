@@ -1,8 +1,8 @@
-// const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
-// const { DynamoDBDocumentClient, PutCommand } = require("@aws-sdk/lib-dynamodb");
+const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
+const { DynamoDBDocumentClient, PutCommand } = require("@aws-sdk/lib-dynamodb");
 
-const AWS = require("aws-sdk");
-const dynamodb = new AWS.DynamoDB.DocumentClient();
+const client = new DynamoDBClient({});
+const dynamodb = DynamoDBDocumentClient.from(client);
 
 exports.handler = async (event) => {
 
@@ -30,7 +30,6 @@ exports.handler = async (event) => {
     }
   }
 
-  // check for required fields
   if(!body.title || !body.company) {
     return {
       statusCode: 400,
@@ -56,7 +55,7 @@ exports.handler = async (event) => {
   };
 
   try {
-    await dynamodb.put(params).promise();
+    await dynamodb.send(new PutCommand(params));
   }
   catch (error) {
     return {
