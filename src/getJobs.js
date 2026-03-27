@@ -10,10 +10,10 @@ exports.handler = async (event) => {
     TableName: "jobs"
   }
 
-  let jobs;
+  let result;
 
   try {
-    jobs = await dynamodb.send(new ScanCommand(params));
+    result = await dynamodb.send(new ScanCommand(params));
   }
   catch (error) {
     return {
@@ -27,7 +27,7 @@ exports.handler = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      jobs: jobs.Items || []
+      jobs: result.Items || []
     })
   }
 }
