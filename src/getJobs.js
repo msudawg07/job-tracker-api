@@ -10,7 +10,19 @@ exports.handler = async (event) => {
     TableName: "jobs"
   }
 
-  const jobs = await dynamodb.send(new ScanCommand(params));
+  let jobs;
+
+  try {
+    jobs = await dynamodb.send(new ScanCommand(params));
+  }
+  catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        message: `Server error - ${error.message}`
+      })
+    }
+  }
 
   return {
     statusCode: 200,
