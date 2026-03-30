@@ -19,7 +19,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 400,
       body: JSON.stringify({
-        message: "job id required"
+        message: "Job id is required"
       })
     }
   }
@@ -62,7 +62,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       body: JSON.stringify({
-        message: `Server error - ${error.message}`
+        message: "Internal server error"
       })
     }
   }
