@@ -42,6 +42,7 @@ Example:
 ```bash
 curl https://8vcuucp5xb.execute-api.us-east-2.amazonaws.com/default/jobs
 ```
+Or, you can simply copy and paste the url into your web browser to see the JSON data returned.
 
 ---
 
