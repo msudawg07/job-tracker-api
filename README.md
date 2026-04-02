@@ -52,7 +52,7 @@ GET /jobs/{id}
 Example:
 
 ```bash
-curl https://8vcuucp5xb.execute-api.us-east-2.amazonaws.com/default/jobs/1774466248886
+curl https://8vcuucp5xb.execute-api.us-east-2.amazonaws.com/default/jobs/1774635194717
 ```
 
 ---
